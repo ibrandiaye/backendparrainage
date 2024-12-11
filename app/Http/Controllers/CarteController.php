@@ -65,7 +65,8 @@ class CarteController extends Controller
         $nom=time().'.'.explode('/',explode(":",substr($signatureDataUrl,0,strpos
         ($signatureDataUrl,';')))[1])[1];
         Image::make($signatureDataUrl)->save(public_path("upload/").$nom);
-        $request->merge(["liensignature"=>$nom]);        $cartes = $this->carteRepository->store($request->all());
+        $request->merge(["liensignature"=>$nom]);
+        $cartes = $this->carteRepository->store($request->all());
         return redirect()->back();
 
     }
